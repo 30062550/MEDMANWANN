@@ -24,19 +24,19 @@ export default async function HomePage() {
 
   {/* เนื้อหาลอยอยู่ด้านล่างของรูป */}
   <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10 text-white">
-    <p className="text-cream-100 text-sm">🏷️ ดี เป็นเวลาอะทุกคนคนใส่ใจติดต่อหากันเตรียมสอบ</p>
+    <p className="text-cream-100 text-sm">🍠🩺 คลัง Mock Exam TPAT1 พร้อมเฉลยละเอียด</p>
     <h1 className="text-3xl sm:text-4xl font-extrabold mt-3 leading-tight">
       MEDMANWANN
     </h1>
     <p className="text-cream-100 mt-3 max-w-md">
-      คลังข้อสอบจำลองพร้อมเฉลย ที่รวบรวมแนวข้อสอบจริงไว้ในที่เดียว
-      เตรียมตัวสอบเข้าทางการแพทย์ได้อย่างมั่นใจ
+      ❗️ พี่มันหวาน พาเตรียมตัวสอบ #กสพท #tpat1 
+      📚 รวมข้อสอบ / แชร์ทริค / คอนเทนต์ พาเข้าคณะสายแพทย์ 🥼
     </p>
     <Link
       href="/products"
       className="inline-block mt-6 px-6 py-2.5 rounded-full bg-accent-300 text-brand-900 font-semibold hover:bg-accent-200"
     >
-      เลือกซื้อข้อสอบเลย
+      คลิกเพื่อเลือกซื้อข้อสอบ
     </Link>
   </div>
 </div>

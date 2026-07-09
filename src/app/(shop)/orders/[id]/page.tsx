@@ -53,7 +53,7 @@ export default async function OrderDetailPage({ params }: { params: { id: string
         <img
           src="https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/object/public/covers/84DE45C2-F8FB-4546-9BAE-70B32C6D48A8.jpg"
           alt="QR พร้อมเพย์"
-          className="w-56 h-56 object-contain rounded-lg border border-gray-200"
+          className="w-72 h-72 md:w-80 md:h-80 object-contain rounded-lg border border-gray-200"
         />
         <div className="space-y-1">
           <p className="font-bold text-brand-800">ธนาคารกรุงไทย</p>

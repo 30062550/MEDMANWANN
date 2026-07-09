@@ -11,22 +11,35 @@ export default async function HomePage() {
   return (
     <div>
       <div className="grid lg:grid-cols-[1fr_360px] gap-6">
-        <div className="bg-gradient-to-br from-brand-700 to-brand-900 rounded-2xl p-8 sm:p-10 text-white relative overflow-hidden">
-          <p className="text-cream-100 text-sm">🏷️ ดี เป็นเวลาอะทุกคนคนใส่ใจติดต่อหากันเตรียมสอบ</p>
-          <h1 className="text-3xl sm:text-4xl font-extrabold mt-3 leading-tight">
-            MEDMANWANN
-          </h1>
-          <p className="text-cream-100 mt-3 max-w-md">
-            คลังข้อสอบจำลองพร้อมเฉลย ที่รวบรวมแนวข้อสอบจริงไว้ในที่เดียว
-            เตรียมตัวสอบเข้าทางการแพทย์ได้อย่างมั่นใจ
-          </p>
-          <Link
-            href="/products"
-            className="inline-block mt-6 px-6 py-2.5 rounded-full bg-accent-300 text-brand-900 font-semibold hover:bg-accent-200"
-          >
-            เลือกซื้อข้อสอบเลย
-          </Link>
-        </div>
+        <div className="relative rounded-2xl overflow-hidden h-[420px] sm:h-[480px]">
+  {/* รูปพื้นหลัง */}
+  <img
+    src="/hero-banner.jpg"
+    alt="MEDMANWANN"
+    className="absolute inset-0 w-full h-full object-cover"
+  />
+
+  {/* Overlay ไล่เฉดมืดจากล่างขึ้นบน ให้ตัวหนังสืออ่านง่าย */}
+  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+  {/* เนื้อหาลอยอยู่ด้านล่างของรูป */}
+  <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10 text-white">
+    <p className="text-cream-100 text-sm">🏷️ ดี เป็นเวลาอะทุกคนคนใส่ใจติดต่อหากันเตรียมสอบ</p>
+    <h1 className="text-3xl sm:text-4xl font-extrabold mt-3 leading-tight">
+      MEDMANWANN
+    </h1>
+    <p className="text-cream-100 mt-3 max-w-md">
+      คลังข้อสอบจำลองพร้อมเฉลย ที่รวบรวมแนวข้อสอบจริงไว้ในที่เดียว
+      เตรียมตัวสอบเข้าทางการแพทย์ได้อย่างมั่นใจ
+    </p>
+    <Link
+      href="/products"
+      className="inline-block mt-6 px-6 py-2.5 rounded-full bg-accent-300 text-brand-900 font-semibold hover:bg-accent-200"
+    >
+      เลือกซื้อข้อสอบเลย
+    </Link>
+  </div>
+</div>
 
         <LoginBox isLoggedIn={!!user} />
       </div>

@@ -48,15 +48,15 @@ export default async function OrderDetailPage({ params }: { params: { id: string
       {(order.status === "pending_payment" || order.status === "rejected") && (
   <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
     <h3 className="font-semibold text-brand-800 mb-3">ข้อมูลการโอนเงิน</h3>
-    <div className="bg-cream-100 rounded-lg p-4 text-sm text-gray-700 space-y-1">
-      <div className="flex flex-col sm:flex-row items-center gap-4">
+    <div className="bg-cream-100 rounded-lg p-4 text-sm text-gray-700">
+      <div className="flex flex-col items-center text-center gap-3">
         <img
           src="https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/object/public/covers/84DE45C2-F8FB-4546-9BAE-70B32C6D48A8.jpg"
           alt="QR พร้อมเพย์"
-          className="w-40 h-40 object-contain rounded-lg border border-gray-200"
+          className="w-56 h-56 object-contain rounded-lg border border-gray-200"
         />
         <div className="space-y-1">
-          <p>ธนาคาร: กรุงไทย</p>
+          <p className="font-bold text-brand-800">ธนาคารกรุงไทย</p>
           <p>เลขที่บัญชี: 661-7-70630-7</p>
           <p>ชื่อบัญชี: น.ส.นิชาภา จัมปากะนันท์</p>
           <p className="text-brand-700 font-semibold mt-2">

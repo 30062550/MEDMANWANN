@@ -52,21 +52,21 @@ export default async function HomePage() {
         <FeatureCard
           icon={<FileText size={22} />}
           title="Mock Exam"
-          description="ข้อสอบจำลอง TPAT1 ที่พี่มันหวานทำเองกับมือทุกข้อ ทั้งหลากหลายแนวและแปลกใหม่ เหมาะสำหรับการฝึกเสมือนจริง"
+          description="ข้อสอบจำลองที่พี่มันหวานทำเองกับมือ หลากหลายแนว แปลกใหม่ และเหมาะสำหรับการฝึกเสมือนจริง"
           href="/products"
           linkLabel="เลือกซื้อข้อสอบ"
         />
         <FeatureCard
           icon={<Layers size={22} />}
           title="Content"
-          description="แบ่งปันข้อมูลเกี่ยวกับการสอบ TPAT1 ไม่ว่าจะเป็นรูปแบบข้อสอบ หรือแชร์ทริคการเตรียมตัวสอบ"
+          description="แบ่งปันข้อมูลเกี่ยวกับการสอบ TPAT1 ทั้งแชร์ทริคการสอบและการเตรียมตัว"
           href="/products"
           linkLabel="เลือกดูคอนเทนต์"
         />
         <FeatureCard
           icon={<Star size={22} />}
           title="Review"
-          description="มีรีวิวจากน้อง ๆ ที่ฝึกทำข้อสอบ จนได้คะแนนดีขึ้นและติดคณะสายกสพท"
+          description="มีรีวิวจากน้อง ๆ ที่ฝึกทำข้อสอบ จนได้คะแนนดีขึ้นและติดคณะสายกสพทตามที่หวังไว้"
           href="/products"
           linkLabel="เลือกดูรีวิว"
         />

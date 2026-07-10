@@ -7,7 +7,7 @@ export default function Footer() {
         <div>
           <p className="font-bold text-lg text-white">MEDMANWANN</p>
           <p className="text-sm text-cream-200 mt-1">
-            คลังข้อสอบจำลองออนไลน์ สำหรับติวเตรียมสอบเข้าทางการแพทย์
+            ช้อสอบ Mock Exam TPAT1 เตรียมสอบเข้าคณะสายกสพท
           </p>
         </div>
 

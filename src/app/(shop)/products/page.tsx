@@ -25,7 +25,7 @@ export default async function ProductsPage({
   return (
     <div>
       <h1 className="text-2xl font-bold text-brand-800">Exam List</h1>
-      <p className="text-gray-500 mt-1 mb-6">รายการสินค้าทั้งหมดที่จำหน่าย</p>
+      <p className="text-gray-500 mt-1 mb-6">รายการข้อสอบทั้งหมดที่จำหน่าย</p>
 
       <form className="flex flex-wrap items-center gap-3 mb-6">
         <div className="relative flex-1 min-w-[220px]">

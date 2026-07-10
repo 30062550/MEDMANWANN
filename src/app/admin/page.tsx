@@ -6,6 +6,15 @@ import { DollarSign, UserPlus, FileText, ClipboardCheck } from "lucide-react";
 
 export const revalidate = 0;
 
+type StatItem = {
+  label: string;
+  value: string;
+  icon?: typeof DollarSign;
+  customIcon?: string;
+  highlight?: boolean;
+  href?: string;
+};
+
 export default async function AdminDashboardPage() {
   const auth = await requireAdmin();
   if (!auth.ok) return null; // layout เช็คสิทธิ์และ redirect ไปแล้ว
@@ -44,11 +53,11 @@ export default async function AdminDashboardPage() {
 
   const typedRecentOrders = (recentOrders as (Order & { product: Pick<Product, "title"> })[] | null) || [];
 
-  const stats = [
+  const stats: StatItem[] = [
     {
       label: "ยอดขายทั้งหมด",
       value: formatTHB(totalRevenue),
-      icon: DollarSign,
+      customIcon: "฿",
     },
     {
       label: "ผู้ใช้ใหม่ (30 วัน)",
@@ -80,7 +89,11 @@ export default async function AdminDashboardPage() {
             <>
               <div className="flex items-center justify-between mb-3">
                 <div className="w-9 h-9 rounded-lg bg-brand-50 text-brand-700 flex items-center justify-center">
-                  <Icon size={18} />
+                  {stat.customIcon ? (
+                    <span className="text-lg font-bold">{stat.customIcon}</span>
+                  ) : (
+                    Icon && <Icon size={18} />
+                  )}
                 </div>
                 {stat.highlight && (
                   <span className="text-xs bg-accent-100 text-accent-600 px-2 py-0.5 rounded-full font-medium">

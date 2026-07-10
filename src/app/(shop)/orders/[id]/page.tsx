@@ -74,7 +74,7 @@ export default async function OrderDetailPage({ params }: { params: { id: string
 
       {order.status === "pending_review" && (
         <div className="bg-accent-50 border border-accent-200 rounded-xl p-4 text-sm text-accent-600">
-          แอดมินกำลังตรวจสอบสลิปของคุณ จะได้รับอีเมลแจ้งผลเมื่อตรวจสอบเสร็จ
+          แอดมินกำลังตรวจสอบสลิปของคุณ กรุณาเข้ามาตรวจสอบสถานะที่หน้านี้อีกครั้งภายใน 24 ชม.
         </div>
       )}
 

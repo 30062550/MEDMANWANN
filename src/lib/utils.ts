@@ -19,6 +19,7 @@ export function formatDateTH(dateString: string): string {
   return new Intl.DateTimeFormat("th-TH", {
     dateStyle: "medium",
     timeStyle: "short",
+    timeZone: "Asia/Bangkok",
   }).format(new Date(dateString));
 }
 

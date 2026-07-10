@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createSupabaseServerClient, createSupabaseServiceRoleClient } from "@/lib/supabase/server";
-import { sendNeedsReviewEmail } from "@/lib/email";
 
 export async function POST(req: NextRequest) {
   const supabase = createSupabaseServerClient();
@@ -67,19 +66,7 @@ export async function POST(req: NextRequest) {
     .update({ status: "pending_review" })
     .eq("id", orderId);
 
-  const productTitle =
-    (order.products as unknown as { title: string } | null)?.title || "ไฟล์ข้อสอบ";
-
-  // แจ้งอีเมลแอดมินว่ามีสลิปใหม่รอตรวจสอบ
-  try {
-    await sendNeedsReviewEmail({
-      orderNo: order.order_no,
-      productTitle,
-      reason: "ลูกค้าแจ้งสลิปใหม่ รอตรวจสอบด้วยมือ",
-    });
-  } catch (e) {
-    console.error("ส่งอีเมลไม่สำเร็จ", e);
-  }
+  
 
   return NextResponse.json({
     status: "pending_review",

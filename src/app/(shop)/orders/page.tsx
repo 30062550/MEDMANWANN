@@ -28,7 +28,7 @@ export default async function OrdersListPage() {
     <div>
       <h1 className="text-2xl font-bold text-brand-800">คลังข้อสอบของฉัน</h1>
       <p className="text-gray-500 mt-1 mb-6">
-        เข้าถึงข้อสอบและเอกสารที่คุณซื้อไว้ทั้งหมดได้ที่นี่
+        ดาวน์โหลดไฟล์ข้อสอบและเฉลยข้อสอบได้เลย
       </p>
 
       {typedOrders.length === 0 && (

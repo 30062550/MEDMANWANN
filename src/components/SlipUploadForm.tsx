@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -7,33 +6,29 @@ export default function SlipUploadForm({ orderId }: { orderId: string }) {
   const router = useRouter();
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false); // เพิ่มบรรทัดนี้
   const [result, setResult] = useState<{ status: string; message: string } | null>(null);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!file) return;
-
+    if (!file || submitted) return; // กันยิงซ้ำตั้งแต่ต้นทาง
     setLoading(true);
     setResult(null);
-
     const formData = new FormData();
     formData.append("orderId", orderId);
     formData.append("file", file);
-
     const res = await fetch("/api/slips/verify", {
       method: "POST",
       body: formData,
     });
-
     const json = await res.json();
     setLoading(false);
-
     if (!res.ok) {
       setResult({ status: "error", message: json.error || "เกิดข้อผิดพลาด" });
-      return;
+      return; // ถ้า error ไม่ set submitted ให้ลองใหม่ได้
     }
-
     setResult({ status: json.status, message: json.message });
+    setSubmitted(true); // ✅ ล็อกถาวรเมื่อสำเร็จ
     router.refresh();
   }
 
@@ -45,18 +40,18 @@ export default function SlipUploadForm({ orderId }: { orderId: string }) {
           type="file"
           accept="image/*"
           required
+          disabled={submitted}
           onChange={(e) => setFile(e.target.files?.[0] || null)}
-          className="block w-full text-sm text-gray-600 border border-gray-200 rounded-md p-2"
+          className="block w-full text-sm text-gray-600 border border-gray-200 rounded-md p-2 disabled:opacity-50 disabled:bg-gray-50"
         />
         <button
           type="submit"
-          disabled={loading || !file}
+          disabled={loading || !file || submitted}
           className="w-full bg-brand-700 text-white rounded-md py-2.5 font-medium hover:bg-brand-800 disabled:opacity-50"
         >
-          {loading ? "กำลังอัปโหลด..." : "อัปโหลดสลิป"}
+          {loading ? "กำลังอัปโหลด..." : submitted ? "ส่งสลิปแล้ว" : "อัปโหลดสลิป"}
         </button>
       </form>
-
       {result && (
         <div
           className={`mt-4 p-3 rounded-md text-sm ${

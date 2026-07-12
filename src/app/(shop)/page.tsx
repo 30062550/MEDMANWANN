@@ -24,13 +24,13 @@ export default async function HomePage() {
 
   {/* เนื้อหาลอยอยู่ด้านล่างของรูป */}
   <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10 text-white">
-    <p className="text-cream-100 text-sm">🍠🩺 คลัง Mock Exam TPAT1 พร้อมเฉลยละเอียด</p>
+    <p className="text-cream-100 text-sm"> คลัง Mock Exam TPAT1 พร้อมเฉลยละเอียด</p>
     <h1 className="text-3xl sm:text-4xl font-extrabold mt-3 leading-tight">
       MEDMANWANN
     </h1>
     <p className="text-cream-100 mt-3 max-w-md">
-      ❗️ พี่มันหวาน พาเตรียมตัวสอบ #กสพท #tpat1 
-      📚 รวมข้อสอบ / แชร์ทริค / คอนเทนต์ พาเข้าคณะสายแพทย์ 🥼
+      พี่มันหวาน พาเตรียมตัวสอบ #กสพท #tpat1 
+      รวมข้อสอบ / แชร์ทริค / คอนเทนต์ พาเข้าคณะสายแพทย์
     </p>
     <Link
       href="/products"

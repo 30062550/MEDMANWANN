@@ -60,8 +60,8 @@ export default async function ProductsPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-brand-800">เลือกวิธีซื้อข้อสอบ</h1>
-      <p className="text-gray-500 mt-1 mb-6">เลือกรูปแบบการซื้อที่ตรงกับความต้องการของคุณ</p>
+      <h1 className="text-2xl font-bold text-brand-800">รายการข้อสอบที่จำหน่าย</h1>
+      <p className="text-gray-500 mt-1 mb-6">เลือกวิธีการซื้อได้เลย</p>
 
       <div className="grid sm:grid-cols-2 gap-5">
         {methods.map((method) => (

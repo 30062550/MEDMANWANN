@@ -72,7 +72,7 @@ export default async function ProductsPage() {
               method.disabled ? "opacity-50 pointer-events-none" : ""
             }`}
           >
-            <div className="relative w-full aspect-[3/4] bg-cream-100">
+            <div className="relative w-full aspect-[4/3] bg-cream-100">
               {method.coverImage ? (
                 <Image
                   src={method.coverImage}

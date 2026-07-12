@@ -14,7 +14,7 @@ export default async function HomePage() {
         <div className="relative rounded-2xl overflow-hidden h-[420px] sm:h-[480px]">
   {/* รูปพื้นหลัง */}
   <img
-    src="/hero-banner.jpg"
+    src="https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/object/sign/hero%20section/hero%20section.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8yZGUwYTg4Zi1hZjhjLTRjZjgtYTRhZS1iZjNjZmQ2YTljOGUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJoZXJvIHNlY3Rpb24vaGVybyBzZWN0aW9uLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODM4NzExMjIsImV4cCI6MjcyOTk1MTEyMn0.QAM6W6r3WA6qOIZb6l5MUYhpE0gluZOIbT4ASPnDRCY"
     alt="MEDMANWANN"
     className="absolute inset-0 w-full h-full object-cover"
   />

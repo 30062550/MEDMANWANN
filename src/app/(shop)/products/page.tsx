@@ -22,7 +22,7 @@ export default async function ProductsPage() {
       description:
         "ได้ข้อสอบ 1 ชุด ครบทั้ง 3 วิชา ได้แก่ เชาวน์ปัญญา จริยธรรมทางการแพทย์ และเชื่อมโยง วิชาละ 1 ฉบับ",
       price: 105,
-      coverImage: "", // <-- ใส่ URL รูปปกตรงนี้
+      coverImage: "https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/object/sign/product/option%201.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8yZGUwYTg4Zi1hZjhjLTRjZjgtYTRhZS1iZjNjZmQ2YTljOGUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9kdWN0L29wdGlvbiAxLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODM4NzU5MDMsImV4cCI6MTgxNTQxMTkwM30.xYZFks1On6yrlGvvedmi7t27tKmZOVLMk0dbaIBWpQU", // <-- ใส่ URL รูปปกตรงนี้
       href: "/buy/by-set",
       disabled: false,
     },
@@ -32,7 +32,7 @@ export default async function ProductsPage() {
       description:
         "ได้ข้อสอบ 1 วิชา ครบ 4 ฉบับจากชุดมันปิ้ง, ชุดมันเผา, ชุดมันเชื่อม และชุดมันหนึบ",
       price: 140,
-      coverImage: "", // <-- ใส่ URL รูปปกตรงนี้
+      coverImage: "https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/object/sign/product/option%202.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8yZGUwYTg4Zi1hZjhjLTRjZjgtYTRhZS1iZjNjZmQ2YTljOGUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9kdWN0L29wdGlvbiAyLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODM4NzU5MjgsImV4cCI6MTgxNTQxMTkyOH0.-c6OL6UHh8zamURitHL5qrTYT_tiMZF_qvZQSbvHLDI", // <-- ใส่ URL รูปปกตรงนี้
       href: "/buy/by-subject",
       disabled: false,
     },
@@ -42,7 +42,7 @@ export default async function ProductsPage() {
       description:
         "ได้ข้อสอบ 2 วิชา วิชาละ 4 ฉบับจากชุดมันปิ้ง, ชุดมันเผา, ชุดมันเชื่อม และชุดมันหนึบ",
       price: 269,
-      coverImage: "", // <-- ใส่ URL รูปปกตรงนี้
+      coverImage: "https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/object/sign/product/option%203.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8yZGUwYTg4Zi1hZjhjLTRjZjgtYTRhZS1iZjNjZmQ2YTljOGUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9kdWN0L29wdGlvbiAzLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODM4NzU5NDQsImV4cCI6MTgxNTQxMTk0NH0.0eXWMHeGiF1GNMXqDvv18m4pwyRn1osgWZwIeLJFEAU", // <-- ใส่ URL รูปปกตรงนี้
       href: "/buy/by-pair",
       disabled: false,
     },
@@ -52,7 +52,7 @@ export default async function ProductsPage() {
       description:
         'ได้ข้อสอบครบ 4 ชุด 3 วิชา รวม 12 ฉบับ แถมฟรีข้อสอบเชื่อมโยง "ชุดมันลูกคุณหนูติดแกลม" สุดหิน',
       price: 319,
-      coverImage: "", // <-- ใส่ URL รูปปกตรงนี้
+      coverImage: "https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/object/sign/product/option%203%20(2).png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8yZGUwYTg4Zi1hZjhjLTRjZjgtYTRhZS1iZjNjZmQ2YTljOGUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9kdWN0L29wdGlvbiAzICgyKS5wbmciLCJzY29wZSI6ImRvd25sb2FkIiwiaWF0IjoxNzgzODc1OTY3LCJleHAiOjE4MTU0MTE5Njd9.CU41V6EaA7m8baTL6SoGrTQmrOIMRDi70VP142HvAFQ", // <-- ใส่ URL รูปปกตรงนี้
       href: bigSetProduct ? `/products/${bigSetProduct.id}` : "#",
       disabled: !bigSetProduct,
     },

@@ -1,13 +1,12 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import Link from "next/link";
-import { Layers, Users2, BookOpen, Package } from "lucide-react";
+import Image from "next/image";
 
 export const revalidate = 0;
 
 export default async function ProductsPage() {
   const supabase = createSupabaseServerClient();
 
-  // ออปชั่น "ซื้อเป็นเซตใหญ่" ไม่มีลิสต์ย่อย ลิงก์ตรงไปหน้าสินค้าเลย
   const { data: bigSetProduct } = await supabase
     .from("products")
     .select("id")
@@ -19,33 +18,41 @@ export default async function ProductsPage() {
   const methods = [
     {
       key: "by-set",
-      title: "ซื้อแยกชุด",
-      description: "เลือกซื้อทีละชุดข้อสอบ มี 4 แบบให้เลือก",
-      icon: Layers,
+      title: "เลือกซื้อ 1 ชุดใดก็ได้",
+      description:
+        "ได้ข้อสอบ 1 ชุด ครบทั้ง 3 วิชา ได้แก่ เชาวน์ปัญญา จริยธรรมทางการแพทย์ และเชื่อมโยง วิชาละ 1 ฉบับ",
+      price: 105,
+      coverImage: "", // <-- ใส่ URL รูปปกตรงนี้
       href: "/buy/by-set",
       disabled: false,
     },
     {
-      key: "by-pair",
-      title: "ซื้อคู่",
-      description: "ซื้อเป็นคู่ในราคาพิเศษ มี 3 แบบให้เลือก",
-      icon: Users2,
-      href: "/buy/by-pair",
-      disabled: false,
-    },
-    {
       key: "by-subject",
-      title: "ซื้อแยกวิชา",
-      description: "เลือกซื้อตามรายวิชา มี 3 แบบให้เลือก",
-      icon: BookOpen,
+      title: "เลือกซื้อ 1 วิชาใดก็ได้",
+      description:
+        "ได้ข้อสอบ 1 วิชา ครบ 4 ฉบับจากชุดมันปิ้ง, ชุดมันเผา, ชุดมันเชื่อม และชุดมันหนึบ",
+      price: 140,
+      coverImage: "", // <-- ใส่ URL รูปปกตรงนี้
       href: "/buy/by-subject",
       disabled: false,
     },
     {
+      key: "by-pair",
+      title: "เลือกซื้อ 2 วิชาใดก็ได้",
+      description:
+        "ได้ข้อสอบ 2 วิชา วิชาละ 4 ฉบับจากชุดมันปิ้ง, ชุดมันเผา, ชุดมันเชื่อม และชุดมันหนึบ",
+      price: 269,
+      coverImage: "", // <-- ใส่ URL รูปปกตรงนี้
+      href: "/buy/by-pair",
+      disabled: false,
+    },
+    {
       key: "big-set",
-      title: "ซื้อเป็นเซตใหญ่",
-      description: "รวมทุกอย่างในราคาคุ้มสุด",
-      icon: Package,
+      title: "MAXMANWANN (แถมข้อสอบเชื่อมโยง 1 ชุด)",
+      description:
+        'ได้ข้อสอบครบ 4 ชุด 3 วิชา รวม 12 ฉบับ แถมฟรีข้อสอบเชื่อมโยง "ชุดมันลูกคุณหนูติดแกลม" สุดหิน',
+      price: 319,
+      coverImage: "", // <-- ใส่ URL รูปปกตรงนี้
       href: bigSetProduct ? `/products/${bigSetProduct.id}` : "#",
       disabled: !bigSetProduct,
     },
@@ -57,29 +64,42 @@ export default async function ProductsPage() {
       <p className="text-gray-500 mt-1 mb-6">เลือกรูปแบบการซื้อที่ตรงกับความต้องการของคุณ</p>
 
       <div className="grid sm:grid-cols-2 gap-5">
-        {methods.map((method) => {
-          const Icon = method.icon;
-          return (
-            <Link
-              key={method.key}
-              href={method.href}
-              className={`bg-white rounded-xl border border-gray-100 shadow-sm p-6 flex items-start gap-4 hover:shadow-md transition ${
-                method.disabled ? "opacity-50 pointer-events-none" : ""
-              }`}
-            >
-              <div className="w-12 h-12 shrink-0 rounded-full bg-brand-50 text-brand-700 flex items-center justify-center">
-                <Icon size={22} />
-              </div>
-              <div>
+        {methods.map((method) => (
+          <Link
+            key={method.key}
+            href={method.href}
+            className={`bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition ${
+              method.disabled ? "opacity-50 pointer-events-none" : ""
+            }`}
+          >
+            <div className="relative w-full aspect-video bg-cream-100">
+              {method.coverImage ? (
+                <Image
+                  src={method.coverImage}
+                  alt={method.title}
+                  fill
+                  className="object-cover"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-gray-300 text-sm">
+                  ไม่มีรูปปก
+                </div>
+              )}
+            </div>
+            <div className="p-5">
+              <div className="flex items-start justify-between gap-3">
                 <h3 className="font-bold text-brand-800">{method.title}</h3>
-                <p className="text-sm text-gray-500 mt-1">{method.description}</p>
-                {method.disabled && (
-                  <p className="text-xs text-red-500 mt-1">ยังไม่มีสินค้าในหมวดนี้</p>
-                )}
+                <span className="shrink-0 font-bold text-accent-500 whitespace-nowrap">
+                  ฿{method.price}
+                </span>
               </div>
-            </Link>
-          );
-        })}
+              <p className="text-sm text-gray-500 mt-1.5">{method.description}</p>
+              {method.disabled && (
+                <p className="text-xs text-red-500 mt-2">ยังไม่มีสินค้าในหมวดนี้</p>
+              )}
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   );

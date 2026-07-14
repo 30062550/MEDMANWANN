@@ -1,4 +1,5 @@
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+ได้เลยครับ ขอโทษที่ทำให้งง นี่คือไฟล์เต็มที่ถูกต้อง 100% เอาไปแทนที่ทั้งไฟล์ src/app/(shop)/products/page.tsx ได้เลย ไม่ต้องแก้อะไรเพิ่ม:
+tsximport { createSupabaseServerClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import Image from "next/image";
 import { Download } from "lucide-react";
@@ -67,7 +68,6 @@ export default async function ProductsPage() {
       <h1 className="text-2xl font-bold text-brand-800">เลือกวิธีซื้อข้อสอบ</h1>
       <p className="text-gray-500 mt-1 mb-6">เลือกรูปแบบการซื้อที่ตรงกับความต้องการของคุณ</p>
 
-      {/* การ์ดชุดทดลองฟรี */}
       
         href={FREE_TRIAL_LINK}
         target="_blank"

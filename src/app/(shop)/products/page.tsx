@@ -1,5 +1,4 @@
-ได้เลยครับ ขอโทษที่ทำให้งง นี่คือไฟล์เต็มที่ถูกต้อง 100% เอาไปแทนที่ทั้งไฟล์ src/app/(shop)/products/page.tsx ได้เลย ไม่ต้องแก้อะไรเพิ่ม:
-tsximport { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import Image from "next/image";
 import { Download } from "lucide-react";

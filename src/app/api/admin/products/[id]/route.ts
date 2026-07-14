@@ -8,7 +8,7 @@ const updateSchema = z.object({
   description: z.string().optional(),
   subject: z.string().optional(),
   price: z.number().min(0).optional(),
-  filePath: z.string().optional(),
+  filePath: z.string().url("กรุณาใส่ลิงก์ที่ถูกต้อง").optional(),
   coverImageUrl: z.string().optional(),
   isActive: z.boolean().optional(),
 });

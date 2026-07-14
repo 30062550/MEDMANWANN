@@ -67,7 +67,7 @@ export default async function ProductsPage() {
       <h1 className="text-2xl font-bold text-brand-800">เลือกวิธีซื้อข้อสอบ</h1>
       <p className="text-gray-500 mt-1 mb-6">เลือกรูปแบบการซื้อที่ตรงกับความต้องการของคุณ</p>
 
-      
+      <a
         href={FREE_TRIAL_LINK}
         target="_blank"
         rel="noopener noreferrer"

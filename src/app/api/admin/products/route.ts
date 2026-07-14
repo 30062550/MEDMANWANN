@@ -8,7 +8,7 @@ const createSchema = z.object({
   description: z.string().optional(),
   subject: z.string().optional(),
   price: z.number().min(0),
-  filePath: z.string().min(1), // path ที่อัปโหลดไว้ใน bucket exam-files แล้ว
+  filePath: z.string().url("กรุณาใส่ลิงก์ที่ถูกต้อง"), // ลิงก์ Google Drive
   coverImageUrl: z.string().optional(),
 });
 

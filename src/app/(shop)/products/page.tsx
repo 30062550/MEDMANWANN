@@ -17,6 +17,16 @@ export default async function ProductsPage() {
 
   const methods = [
     {
+      key: "big-set",
+      title: "MAXMANWANN (แถมข้อสอบเชื่อมโยง 1 ชุด)",
+      description:
+        'ได้ข้อสอบครบ 4 ชุด 3 วิชา รวม 12 ฉบับ แถมฟรีข้อสอบเชื่อมโยง "ชุดมันลูกคุณหนูติดแกลม" สุดหิน',
+      price: 319,
+      coverImage: "https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/object/sign/product/option%203%20(2).png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8yZGUwYTg4Zi1hZjhjLTRjZjgtYTRhZS1iZjNjZmQ2YTljOGUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9kdWN0L29wdGlvbiAzICgyKS5wbmciLCJzY29wZSI6ImRvd25sb2FkIiwiaWF0IjoxNzgzODc1OTY3LCJleHAiOjE4MTU0MTE5Njd9.CU41V6EaA7m8baTL6SoGrTQmrOIMRDi70VP142HvAFQ", // <-- ใส่ URL รูปปกตรงนี้
+      href: bigSetProduct ? `/products/${bigSetProduct.id}` : "#",
+      disabled: !bigSetProduct,
+    },
+    {
       key: "by-set",
       title: "เลือกซื้อ 1 ชุดใดก็ได้",
       description:
@@ -45,16 +55,6 @@ export default async function ProductsPage() {
       coverImage: "https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/object/sign/product/option%203.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8yZGUwYTg4Zi1hZjhjLTRjZjgtYTRhZS1iZjNjZmQ2YTljOGUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9kdWN0L29wdGlvbiAzLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODM4NzU5NDQsImV4cCI6MTgxNTQxMTk0NH0.0eXWMHeGiF1GNMXqDvv18m4pwyRn1osgWZwIeLJFEAU", // <-- ใส่ URL รูปปกตรงนี้
       href: "/buy/by-pair",
       disabled: false,
-    },
-    {
-      key: "big-set",
-      title: "MAXMANWANN (แถมข้อสอบเชื่อมโยง 1 ชุด)",
-      description:
-        'ได้ข้อสอบครบ 4 ชุด 3 วิชา รวม 12 ฉบับ แถมฟรีข้อสอบเชื่อมโยง "ชุดมันลูกคุณหนูติดแกลม" สุดหิน',
-      price: 319,
-      coverImage: "https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/object/sign/product/option%203%20(2).png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8yZGUwYTg4Zi1hZjhjLTRjZjgtYTRhZS1iZjNjZmQ2YTljOGUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9kdWN0L29wdGlvbiAzICgyKS5wbmciLCJzY29wZSI6ImRvd25sb2FkIiwiaWF0IjoxNzgzODc1OTY3LCJleHAiOjE4MTU0MTE5Njd9.CU41V6EaA7m8baTL6SoGrTQmrOIMRDi70VP142HvAFQ", // <-- ใส่ URL รูปปกตรงนี้
-      href: bigSetProduct ? `/products/${bigSetProduct.id}` : "#",
-      disabled: !bigSetProduct,
     },
   ];
 

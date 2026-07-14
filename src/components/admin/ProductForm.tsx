@@ -12,14 +12,14 @@ export default function ProductForm({ existingProduct }: { existingProduct?: Pro
   const [subject, setSubject] = useState(existingProduct?.subject || "");
   const [description, setDescription] = useState(existingProduct?.description || "");
   const [price, setPrice] = useState(existingProduct?.price?.toString() || "");
+  const [driveLink, setDriveLink] = useState(existingProduct?.file_path || "");
 
-  const [examFile, setExamFile] = useState<File | null>(null);
   const [coverFile, setCoverFile] = useState<File | null>(null);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  async function uploadFile(file: File, type: "exam-file" | "cover") {
+  async function uploadFile(file: File, type: "cover") {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("type", type);
@@ -35,21 +35,15 @@ export default function ProductForm({ existingProduct }: { existingProduct?: Pro
     e.preventDefault();
     setError(null);
 
-    if (!isEdit && !examFile) {
-      setError("กรุณาอัปโหลดไฟล์ข้อสอบ");
+    if (!driveLink.trim()) {
+      setError("กรุณาใส่ลิงก์ Google Drive");
       return;
     }
 
     setLoading(true);
 
     try {
-      let filePath = existingProduct?.file_path;
       let coverImageUrl = existingProduct?.cover_image_url;
-
-      if (examFile) {
-        const result = await uploadFile(examFile, "exam-file");
-        filePath = result.filePath;
-      }
 
       if (coverFile) {
         const result = await uploadFile(coverFile, "cover");
@@ -61,7 +55,7 @@ export default function ProductForm({ existingProduct }: { existingProduct?: Pro
         subject,
         description,
         price: parseFloat(price),
-        filePath,
+        filePath: driveLink.trim(),
         coverImageUrl,
       };
 
@@ -107,7 +101,7 @@ export default function ProductForm({ existingProduct }: { existingProduct?: Pro
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
           className="w-full rounded-md border border-gray-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-300"
-          placeholder="เช่น คณิตศาสตร์ ม.6"
+          placeholder="เช่น แยกชุด, แยกวิชา, คู่, เซตใหญ่"
         />
       </div>
 
@@ -136,17 +130,19 @@ export default function ProductForm({ existingProduct }: { existingProduct?: Pro
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">
-          ไฟล์ข้อสอบ (PDF) {isEdit && "— เว้นว่างถ้าไม่เปลี่ยน"}
+          ลิงก์ Google Drive (โฟลเดอร์หรือไฟล์ข้อสอบ)
         </label>
         <input
-          type="file"
-          accept=".pdf,.zip,.doc,.docx"
-          onChange={(e) => setExamFile(e.target.files?.[0] || null)}
-          className="block w-full text-sm text-gray-600 border border-gray-200 rounded-md p-2"
+          type="url"
+          required
+          value={driveLink}
+          onChange={(e) => setDriveLink(e.target.value)}
+          placeholder="https://drive.google.com/drive/folders/xxxxxxx"
+          className="w-full rounded-md border border-gray-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-300"
         />
-        {isEdit && existingProduct?.file_path && (
-          <p className="text-xs text-gray-400 mt-1">ไฟล์ปัจจุบัน: {existingProduct.file_path}</p>
-        )}
+        <p className="text-xs text-gray-400 mt-1">
+          ตั้งค่าแชร์โฟลเดอร์เป็น &quot;ทุกคนที่มีลิงก์&quot; ก่อนวางลิงก์ที่นี่
+        </p>
       </div>
 
       <div>

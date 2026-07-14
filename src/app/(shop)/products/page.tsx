@@ -75,7 +75,7 @@ export default async function ProductsPage() {
       >
         <div className="relative w-24 h-20 sm:w-28 sm:h-24 shrink-0 rounded-lg overflow-hidden bg-cream-100">
           {FREE_TRIAL_COVER ? (
-            <Image src={FREE_TRIAL_COVER} alt="ชุดทดลองฟรี" fill className="object-cover" />
+            <Image src={FREE_TRIAL_COVER} alt="FREE! ข้อสอบชุดทดลอง" fill className="object-cover" />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">
               ไม่มีรูป
@@ -87,9 +87,9 @@ export default async function ProductsPage() {
         </div>
 
         <div className="flex-1 min-w-0">
-          <h3 className="font-semibold text-brand-800">ชุดทดลองฟรี</h3>
+          <h3 className="font-semibold text-brand-800">FREE! ข้อสอบชุดทดลอง</h3>
           <p className="text-sm text-gray-500 mt-0.5">
-            ลองสัมผัสข้อสอบจริงก่อนตัดสินใจซื้อ ไม่มีค่าใช้จ่าย
+            ลองทำความรู้จัก Mock TPAT1 by MEDMANWANN ได้เลย ฟรี! ไม่มีค่าใช้จ่าย
           </p>
         </div>
 

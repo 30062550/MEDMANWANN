@@ -26,7 +26,7 @@ export default async function ProductsPage() {
       description:
         'ได้ข้อสอบครบ 4 ชุด 3 วิชา รวม 12 ฉบับ แถมฟรีข้อสอบเชื่อมโยง "ชุดมันลูกคุณหนูติดแกลม" สุดหิน',
       price: 319,
-      coverImage: "",
+      coverImage: "https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/object/sign/product/option%203%20(2).png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8yZGUwYTg4Zi1hZjhjLTRjZjgtYTRhZS1iZjNjZmQ2YTljOGUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9kdWN0L29wdGlvbiAzICgyKS5wbmciLCJzY29wZSI6ImRvd25sb2FkIiwiaWF0IjoxNzg0MDI1MjI2LCJleHAiOjE4MTU1NjEyMjZ9.fAyDIBmAcR42lK5qkqD8TbSbmO50qyOgI_boerYq1lo",
       href: bigSetProduct ? `/products/${bigSetProduct.id}` : "#",
       disabled: !bigSetProduct,
     },
@@ -36,7 +36,7 @@ export default async function ProductsPage() {
       description:
         "ได้ข้อสอบ 1 ชุด ครบทั้ง 3 วิชา ได้แก่ เชาวน์ปัญญา จริยธรรมทางการแพทย์ และเชื่อมโยง วิชาละ 1 ฉบับ",
       price: 105,
-      coverImage: "",
+      coverImage: "https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/object/sign/product/option%201.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8yZGUwYTg4Zi1hZjhjLTRjZjgtYTRhZS1iZjNjZmQ2YTljOGUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9kdWN0L29wdGlvbiAxLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODQwMjUyNDQsImV4cCI6MTgxNTU2MTI0NH0.L6sv39A9JR48CQbRUGxHL9yKReFItRllDv8PKkaa-UU",
       href: "/buy/by-set",
       disabled: false,
     },
@@ -46,7 +46,7 @@ export default async function ProductsPage() {
       description:
         "ได้ข้อสอบ 1 วิชา ครบ 4 ฉบับจากชุดมันปิ้ง, ชุดมันเผา, ชุดมันเชื่อม และชุดมันหนึบ",
       price: 140,
-      coverImage: "",
+      coverImage: "https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/object/sign/product/option%202.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8yZGUwYTg4Zi1hZjhjLTRjZjgtYTRhZS1iZjNjZmQ2YTljOGUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9kdWN0L29wdGlvbiAyLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODQwMjUyNjEsImV4cCI6MTgxNTU2MTI2MX0.6wEjNpYdHjhrCFHbDTBlpd7DYyBdeh9xI8mcUU0nR4A",
       href: "/buy/by-subject",
       disabled: false,
     },
@@ -56,7 +56,7 @@ export default async function ProductsPage() {
       description:
         "ได้ข้อสอบ 2 วิชา วิชาละ 4 ฉบับจากชุดมันปิ้ง, ชุดมันเผา, ชุดมันเชื่อม และชุดมันหนึบ",
       price: 269,
-      coverImage: "",
+      coverImage: "https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/object/sign/product/option%203.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8yZGUwYTg4Zi1hZjhjLTRjZjgtYTRhZS1iZjNjZmQ2YTljOGUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9kdWN0L29wdGlvbiAzLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODQwMjUyODQsImV4cCI6MTgxNTU2MTI4NH0.eWc6sOcy_GHQpKbPxzWBRlE9MfcL1pIMN0TvXFJr_Zw",
       href: "/buy/by-pair",
       disabled: false,
     },

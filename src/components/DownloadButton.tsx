@@ -44,7 +44,7 @@ export default function DownloadButton({
       {links && links.length > 1 && (
         <div className="mt-2 space-y-1">
           {links.map((url, i) => (
-            
+            <a
               key={i}
               href={url}
               target="_blank"

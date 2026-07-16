@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Product } from "@/lib/types";
+import { X, Plus } from "lucide-react";
 
 export default function ProductForm({ existingProduct }: { existingProduct?: Product }) {
   const router = useRouter();
@@ -12,12 +13,31 @@ export default function ProductForm({ existingProduct }: { existingProduct?: Pro
   const [subject, setSubject] = useState(existingProduct?.subject || "");
   const [description, setDescription] = useState(existingProduct?.description || "");
   const [price, setPrice] = useState(existingProduct?.price?.toString() || "");
-  const [driveLink, setDriveLink] = useState(existingProduct?.file_path || "");
+
+  // แยกลิงก์เดิม (คั่นด้วยขึ้นบรรทัดใหม่) กลับเป็น array ตอนโหลดฟอร์มแก้ไข
+  const initialLinks = existingProduct?.file_path
+    ? existingProduct.file_path.split("\n").filter((l) => l.trim())
+    : [""];
+  const [driveLinks, setDriveLinks] = useState<string[]>(
+    initialLinks.length > 0 ? initialLinks : [""]
+  );
 
   const [coverFile, setCoverFile] = useState<File | null>(null);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  function updateLink(index: number, value: string) {
+    setDriveLinks((prev) => prev.map((l, i) => (i === index ? value : l)));
+  }
+
+  function addLinkField() {
+    setDriveLinks((prev) => [...prev, ""]);
+  }
+
+  function removeLinkField(index: number) {
+    setDriveLinks((prev) => prev.filter((_, i) => i !== index));
+  }
 
   async function uploadFile(file: File, type: "cover") {
     const formData = new FormData();
@@ -35,8 +55,9 @@ export default function ProductForm({ existingProduct }: { existingProduct?: Pro
     e.preventDefault();
     setError(null);
 
-    if (!driveLink.trim()) {
-      setError("กรุณาใส่ลิงก์ Google Drive");
+    const cleanLinks = driveLinks.map((l) => l.trim()).filter((l) => l.length > 0);
+    if (cleanLinks.length === 0) {
+      setError("กรุณาใส่ลิงก์ Google Drive อย่างน้อย 1 ลิงก์");
       return;
     }
 
@@ -55,7 +76,7 @@ export default function ProductForm({ existingProduct }: { existingProduct?: Pro
         subject,
         description,
         price: parseFloat(price),
-        filePath: driveLink.trim(),
+        filePath: cleanLinks.join("\n"), // รวมหลายลิงก์เป็น string เดียว คั่นด้วยขึ้นบรรทัดใหม่
         coverImageUrl,
       };
 
@@ -130,18 +151,39 @@ export default function ProductForm({ existingProduct }: { existingProduct?: Pro
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">
-          ลิงก์ Google Drive (โฟลเดอร์หรือไฟล์ข้อสอบ)
+          ลิงก์ Google Drive (ใส่ได้หลายลิงก์)
         </label>
-        <input
-          type="url"
-          required
-          value={driveLink}
-          onChange={(e) => setDriveLink(e.target.value)}
-          placeholder="https://drive.google.com/drive/folders/xxxxxxx"
-          className="w-full rounded-md border border-gray-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-300"
-        />
+        <div className="space-y-2">
+          {driveLinks.map((link, index) => (
+            <div key={index} className="flex gap-2">
+              <input
+                type="url"
+                value={link}
+                onChange={(e) => updateLink(index, e.target.value)}
+                placeholder="https://drive.google.com/drive/folders/xxxxxxx"
+                className="flex-1 rounded-md border border-gray-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-300"
+              />
+              {driveLinks.length > 1 && (
+                <button
+                  type="button"
+                  onClick={() => removeLinkField(index)}
+                  className="shrink-0 w-10 h-10 flex items-center justify-center rounded-md border border-gray-200 text-red-500 hover:bg-red-50"
+                >
+                  <X size={16} />
+                </button>
+              )}
+            </div>
+          ))}
+        </div>
+        <button
+          type="button"
+          onClick={addLinkField}
+          className="mt-2 flex items-center gap-1.5 text-sm text-brand-600 hover:underline"
+        >
+          <Plus size={14} /> เพิ่มลิงก์
+        </button>
         <p className="text-xs text-gray-400 mt-1">
-          ตั้งค่าแชร์โฟลเดอร์เป็น &quot;ทุกคนที่มีลิงก์&quot; ก่อนวางลิงก์ที่นี่
+          ตั้งค่าแชร์แต่ละลิงก์เป็น &quot;ทุกคนที่มีลิงก์&quot; ก่อนวางที่นี่
         </p>
       </div>
 

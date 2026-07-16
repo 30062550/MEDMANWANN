@@ -25,8 +25,13 @@ export async function GET(req: NextRequest) {
       { status: 403 }
     );
   }
-  const driveLink = (order.products as unknown as { file_path: string } | null)?.file_path;
-  if (!driveLink) {
+  const rawFilePath = (order.products as unknown as { file_path: string } | null)?.file_path;
+  const links = (rawFilePath || "")
+    .split("\n")
+    .map((l) => l.trim())
+    .filter((l) => l.length > 0);
+
+  if (links.length === 0) {
     return NextResponse.json({ error: "ไม่พบไฟล์สินค้านี้" }, { status: 404 });
   }
 
@@ -36,5 +41,5 @@ export async function GET(req: NextRequest) {
     user_id: userData.user.id,
   });
 
-  return NextResponse.json({ url: driveLink });
+  return NextResponse.json({ links });
 }

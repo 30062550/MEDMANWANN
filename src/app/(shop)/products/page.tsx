@@ -5,7 +5,7 @@ import { Download } from "lucide-react";
 
 export const revalidate = 0;
 
-const FREE_TRIAL_LINK = "https://drive.google.com/drive/folders/xxxxxxx"; // <-- ใส่ลิงก์ Google Drive ของชุดทดลอง
+const FREE_TRIAL_LINK = "https://drive.google.com/drive/folders/1543bS049n0WQ2OJ4p1YK-f6NDBfvSyNu?usp=drive_link"; // <-- ใส่ลิงก์ Google Drive ของชุดทดลอง
 const FREE_TRIAL_COVER = ""; // <-- ใส่ URL รูปปกของชุดทดลอง (ถ้ามี)
 
 export default async function ProductsPage() {

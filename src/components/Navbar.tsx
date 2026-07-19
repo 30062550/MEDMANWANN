@@ -1,13 +1,12 @@
 import Link from "next/link";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { Home, FileText, FolderOpen, Search, ShoppingCart, User } from "lucide-react";
+import { Home, FileText, FolderOpen, Search, ShoppingCart, User, MessageCircle } from "lucide-react";
 import LogoutButton from "./LogoutButton";
 
 export default async function Navbar() {
   const supabase = createSupabaseServerClient();
   const { data } = await supabase.auth.getUser();
   const user = data.user;
-
   let isAdmin = false;
   if (user) {
     const { data: profile } = await supabase
@@ -17,14 +16,12 @@ export default async function Navbar() {
       .single();
     isAdmin = !!profile?.is_admin;
   }
-
   return (
     <header className="bg-white sticky top-0 z-30 shadow-sm">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
         <Link href="/" className="font-extrabold text-lg text-brand-700 tracking-tight shrink-0">
           MEDMANWANN
         </Link>
-
         <nav className="hidden md:flex items-center gap-6 text-sm text-gray-600">
           <Link href="/" className="flex items-center gap-1.5 hover:text-brand-600">
             <Home size={16} /> หน้าแรก
@@ -37,6 +34,9 @@ export default async function Navbar() {
               <FolderOpen size={16} /> คลังข้อสอบของฉัน
             </Link>
           )}
+          <Link href="/contact" className="flex items-center gap-1.5 hover:text-brand-600">
+            <MessageCircle size={16} /> ติดต่อเรา
+          </Link>
           {isAdmin && (
             <Link
               href="/admin"
@@ -46,15 +46,14 @@ export default async function Navbar() {
             </Link>
           )}
         </nav>
-
         <div className="flex items-center gap-3 shrink-0">
-          <button
+          <Link
+            href="/products"
             aria-label="ค้นหา"
             className="p-2 rounded-full text-gray-500 hover:bg-cream-100 hidden sm:inline-flex"
           >
             <Search size={18} />
-          </button>
-
+          </Link>
           {user && (
             <Link
               href="/orders"
@@ -64,13 +63,16 @@ export default async function Navbar() {
               <ShoppingCart size={18} />
             </Link>
           )}
-
           {user ? (
             <div className="flex items-center gap-2">
               <span className="hidden lg:inline text-sm text-gray-500">{user.email}</span>
-              <div className="w-8 h-8 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center">
+              <Link
+                href="/profile"
+                aria-label="โปรไฟล์"
+                className="w-8 h-8 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center hover:bg-brand-200"
+              >
                 <User size={16} />
-              </div>
+              </Link>
               <LogoutButton />
             </div>
           ) : (

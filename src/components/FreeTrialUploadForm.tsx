@@ -76,7 +76,7 @@ export default function FreeTrialUploadForm({ driveLink }: { driveLink: string }
         <p className="text-sm text-green-600 mt-3 text-center">
           เปิดลิงก์ไฟล์ข้อสอบให้แล้ว หากไม่ขึ้นหน้าต่างใหม่ อาจถูกเบราว์เซอร์บล็อก
           กด{" "}
-          
+          <a
             href={driveLink}
             target="_blank"
             rel="noopener noreferrer"

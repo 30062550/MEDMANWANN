@@ -5,7 +5,7 @@ import { Download } from "lucide-react";
 
 export const revalidate = 0;
 
-const FREE_TRIAL_COVER = ""; // <-- ใส่ URL รูปปกของชุดทดลอง (ถ้ามี)
+const FREE_TRIAL_COVER = "https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/object/sign/free%20mock/Untitled%20design%20(7).png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8yZGUwYTg4Zi1hZjhjLTRjZjgtYTRhZS1iZjNjZmQ2YTljOGUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJmcmVlIG1vY2svVW50aXRsZWQgZGVzaWduICg3KS5wbmciLCJzY29wZSI6ImRvd25sb2FkIiwiaWF0IjoxNzg0NDg5MjIxLCJleHAiOjE4MTYwMjUyMjF9.ebqCNooEH2wqPAWL-umFFtMdoOxjqC3alz_IA1eKAN4"; // <-- ใส่ URL รูปปกของชุดทดลอง (ถ้ามี)
 
 export default async function ProductsPage() {
   const supabase = createSupabaseServerClient();
@@ -25,7 +25,7 @@ export default async function ProductsPage() {
       description:
         'ได้ข้อสอบครบ 4 ชุด 3 วิชา รวม 12 ฉบับ แถมฟรีข้อสอบเชื่อมโยง "ชุดมันลูกคุณหนูติดแกลม" สุดหิน',
       price: 319,
-      coverImage: "",
+      coverImage: "https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/object/sign/product/option%203%20(2).png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8yZGUwYTg4Zi1hZjhjLTRjZjgtYTRhZS1iZjNjZmQ2YTljOGUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9kdWN0L29wdGlvbiAzICgyKS5wbmciLCJzY29wZSI6ImRvd25sb2FkIiwiaWF0IjoxNzg0NDg5MjU5LCJleHAiOjE4MTYwMjUyNTl9.Wf4k__J8A3Ijpr9BCWSyFy-M_gor3n2vaPzY1Vob4CA",
       href: bigSetProduct ? `/products/${bigSetProduct.id}` : "#",
       disabled: !bigSetProduct,
     },
@@ -35,7 +35,7 @@ export default async function ProductsPage() {
       description:
         "ได้ข้อสอบ 1 ชุด ครบทั้ง 3 วิชา ได้แก่ เชาวน์ปัญญา จริยธรรมทางการแพทย์ และเชื่อมโยง วิชาละ 1 ฉบับ",
       price: 105,
-      coverImage: "",
+      coverImage: "https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/object/sign/product/option%201.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8yZGUwYTg4Zi1hZjhjLTRjZjgtYTRhZS1iZjNjZmQ2YTljOGUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9kdWN0L29wdGlvbiAxLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODQ0ODkyODcsImV4cCI6MTgxNjAyNTI4N30.3t2dhKuAMqfoBxcDUsWAYq7PzuGIxLegE-ECqIGYFrg",
       href: "/buy/by-set",
       disabled: false,
     },
@@ -45,7 +45,7 @@ export default async function ProductsPage() {
       description:
         "ได้ข้อสอบ 1 วิชา ครบ 4 ฉบับจากชุดมันปิ้ง, ชุดมันเผา, ชุดมันเชื่อม และชุดมันหนึบ",
       price: 140,
-      coverImage: "",
+      coverImage: "https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/object/sign/product/option%202.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8yZGUwYTg4Zi1hZjhjLTRjZjgtYTRhZS1iZjNjZmQ2YTljOGUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9kdWN0L29wdGlvbiAyLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODQ0ODkzMTAsImV4cCI6MTgxNjAyNTMxMH0.pTEUJFXRF3Q5olYlnUCXwOLHoruIMAEm6O5fbt4lhf4",
       href: "/buy/by-subject",
       disabled: false,
     },
@@ -55,7 +55,7 @@ export default async function ProductsPage() {
       description:
         "ได้ข้อสอบ 2 วิชา วิชาละ 4 ฉบับจากชุดมันปิ้ง, ชุดมันเผา, ชุดมันเชื่อม และชุดมันหนึบ",
       price: 269,
-      coverImage: "",
+      coverImage: "https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/object/sign/product/option%203.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8yZGUwYTg4Zi1hZjhjLTRjZjgtYTRhZS1iZjNjZmQ2YTljOGUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9kdWN0L29wdGlvbiAzLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODQ0ODkzMjUsImV4cCI6MTgxNjAyNTMyNX0.jzs7kad7oLuvmaGzycH6xXBNLmlGTyT8ugDPMJhZV1w",
       href: "/buy/by-pair",
       disabled: false,
     },
@@ -64,7 +64,7 @@ export default async function ProductsPage() {
   return (
     <div>
       <h1 className="text-2xl font-bold text-brand-800">เลือกวิธีซื้อข้อสอบ</h1>
-      <p className="text-gray-500 mt-1 mb-6">เลือกรูปแบบการซื้อที่ตรงกับความต้องการของคุณ</p>
+      <p className="text-gray-500 mt-1 mb-6">เลือกรูปแบบการซื้อที่ต้องการ</p>
 
       <Link
         href="/free-trial"
@@ -72,7 +72,7 @@ export default async function ProductsPage() {
       >
         <div className="relative w-24 h-20 sm:w-28 sm:h-24 shrink-0 rounded-lg overflow-hidden bg-cream-100">
           {FREE_TRIAL_COVER ? (
-            <Image src={FREE_TRIAL_COVER} alt="ชุดทดลองฟรี" fill className="object-cover" />
+            <Image src={FREE_TRIAL_COVER} alt="FREE! MOCKMANWANN" fill className="object-cover" />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">
               ไม่มีรูป
@@ -84,9 +84,9 @@ export default async function ProductsPage() {
         </div>
 
         <div className="flex-1 min-w-0">
-          <h3 className="font-semibold text-brand-800">ชุดทดลองฟรี</h3>
+          <h3 className="font-semibold text-brand-800">FREE! MOCKMANWANN</h3>
           <p className="text-sm text-gray-500 mt-0.5">
-            ลองสัมผัสข้อสอบจริงก่อนตัดสินใจซื้อ ไม่มีค่าใช้จ่าย
+            Mock TPAT1 by MEDMANWANN ชุดทดลอง ฟรี! ไม่มีค่าใช้จ่าย
           </p>
         </div>
 

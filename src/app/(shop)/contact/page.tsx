@@ -29,7 +29,7 @@ export default function ContactPage() {
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 text-center">
         <h1 className="text-2xl font-bold text-brand-800">MEDMANWANN</h1>
         <p className="text-sm text-gray-500 mt-2 mb-8">
-          medmanwann | med มัน หวาน 🍬 stay soft, study smart ˗ˏˋ ♡ ˎˊ˗
+          medmanwann - med mun waan, stay soft study smart
         </p>
 
         <div className="space-y-3">

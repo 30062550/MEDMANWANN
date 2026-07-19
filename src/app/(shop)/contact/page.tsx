@@ -36,7 +36,7 @@ export default function ContactPage() {
           {CHANNELS.map((channel) => {
             const Icon = channel.icon;
             return (
-              
+            <a  
                 key={channel.name}
                 href={channel.href}
                 target="_blank"

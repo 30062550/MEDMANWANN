@@ -1,23 +1,55 @@
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Instagram, Twitter, Music2 } from "lucide-react";
 
-const LINKTREE_URL = "https://linktr.ee/medmanwann";
+const CHANNELS = [
+  {
+    name: "LINE Official",
+    href: "https://lin.ee/xyteUTe",
+    icon: MessageCircle,
+  },
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/medmanwann?igsh=MXg4ODQ1bHJveTZlcQ==",
+    icon: Instagram,
+  },
+  {
+    name: "X (Twitter)",
+    href: "https://x.com/medmanwann?s=11&t=ETiEyEnqH1AdGHn6TUt5DQ",
+    icon: Twitter,
+  },
+  {
+    name: "TikTok",
+    href: "https://www.tiktok.com/@medmanwann?_r=1&_t=ZS-98AcglXE2BZ",
+    icon: Music2,
+  },
+];
 
 export default function ContactPage() {
   return (
-    <div className="max-w-md mx-auto text-center">
-      <h1 className="text-2xl font-bold text-brand-800 mb-2">ติดต่อเรา</h1>
-      <p className="text-gray-500 mb-8">
-        มีคำถามหรือต้องการความช่วยเหลือ ติดต่อเราได้ตามช่องทางด้านล่าง
-      </p>
+    <div className="max-w-md mx-auto">
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 text-center">
+        <h1 className="text-2xl font-bold text-brand-800">MEDMANWANN</h1>
+        <p className="text-sm text-gray-500 mt-2 mb-8">
+          medmanwann | med มัน หวาน 🍬 stay soft, study smart ˗ˏˋ ♡ ˎˊ˗
+        </p>
 
-      <a
-        href={LINKTREE_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center justify-center gap-2 bg-brand-700 text-white rounded-md py-3 font-medium hover:bg-brand-800"
-      >
-        <MessageCircle size={18} /> ช่องทางติดต่อทั้งหมด
-      </a>
+        <div className="space-y-3">
+          {CHANNELS.map((channel) => {
+            const Icon = channel.icon;
+            return (
+              
+                key={channel.name}
+                href={channel.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 bg-brand-700 hover:bg-brand-800 text-white rounded-full py-3 px-5 font-medium transition"
+              >
+                <Icon size={20} />
+                <span className="flex-1 text-left">{channel.name}</span>
+              </a>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }

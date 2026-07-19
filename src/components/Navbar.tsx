@@ -18,11 +18,11 @@ export default async function Navbar() {
   }
   return (
     <header className="bg-white sticky top-0 z-30 shadow-sm">
-      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
         <Link href="/" className="font-extrabold text-lg text-brand-700 tracking-tight shrink-0">
           MEDMANWANN
         </Link>
-        <nav className="hidden md:flex items-center gap-6 text-sm text-gray-600">
+        <nav className="hidden lg:flex items-center gap-4 text-sm text-gray-600 whitespace-nowrap">
           <Link href="/" className="flex items-center gap-1.5 hover:text-brand-600">
             <Home size={16} /> หน้าแรก
           </Link>
@@ -65,7 +65,7 @@ export default async function Navbar() {
           )}
           {user ? (
             <div className="flex items-center gap-2">
-              <span className="hidden lg:inline text-sm text-gray-500">{user.email}</span>
+              <span className="hidden xl:inline text-sm text-gray-500">{user.email}</span>
               <Link
                 href="/profile"
                 aria-label="โปรไฟล์"
@@ -79,13 +79,13 @@ export default async function Navbar() {
             <div className="flex items-center gap-2">
               <Link
                 href="/login"
-                className="px-3 py-1.5 rounded-md text-gray-700 hover:bg-cream-100 text-sm"
+                className="px-3 py-1.5 rounded-md text-gray-700 hover:bg-cream-100 text-sm whitespace-nowrap"
               >
                 เข้าสู่ระบบ
               </Link>
               <Link
                 href="/signup"
-                className="px-4 py-1.5 rounded-md bg-brand-700 text-white hover:bg-brand-800 text-sm font-medium"
+                className="px-4 py-1.5 rounded-md bg-brand-700 text-white hover:bg-brand-800 text-sm font-medium whitespace-nowrap"
               >
                 สร้างบัญชีใหม่
               </Link>

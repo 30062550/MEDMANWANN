@@ -14,7 +14,7 @@ export default async function HomePage() {
         <div className="relative rounded-2xl overflow-hidden h-[420px] sm:h-[480px]">
   {/* รูปพื้นหลัง */}
   <img
-    src="https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/object/sign/new%20hero/hro%201.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8yZGUwYTg4Zi1hZjhjLTRjZjgtYTRhZS1iZjNjZmQ2YTljOGUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJuZXcgaGVyby9ocm8gMS5qcGciLCJzY29wZSI6ImRvd25sb2FkIiwiaWF0IjoxNzgzODcyMTE1LCJleHAiOjE3ODQ0NzY5MTV9.YqlI9vGXJlx7NdDBcqC6V64UoHN_I83o1iHQ8ChQxDg"
+    src="https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/object/sign/newnew%20hero/Untitled%20design%20(6).png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8yZGUwYTg4Zi1hZjhjLTRjZjgtYTRhZS1iZjNjZmQ2YTljOGUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJuZXduZXcgaGVyby9VbnRpdGxlZCBkZXNpZ24gKDYpLnBuZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODQ0ODc2ODgsImV4cCI6MTgxNjAyMzY4OH0.6xbl6b2f2MZ-lNsvw2D-P2NfAFruHUuSVUjjPJbTRcM"
     alt="MEDMANWANN"
     className="absolute inset-0 w-full h-full object-cover"
   />

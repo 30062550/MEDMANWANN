@@ -44,6 +44,9 @@ export interface PaymentSlip {
 export interface Profile {
   id: string;
   full_name: string | null;
+  username: string | null;
+  avatar_url: string | null;
+  dek_year: string | null;
   phone: string | null;
   is_admin: boolean;
   created_at: string;

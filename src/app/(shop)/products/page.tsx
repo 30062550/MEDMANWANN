@@ -6,7 +6,7 @@ import { Download } from "lucide-react";
 export const revalidate = 0;
 
 const FREE_TRIAL_LINK = "https://drive.google.com/drive/folders/1543bS049n0WQ2OJ4p1YK-f6NDBfvSyNu?usp=drive_link"; // <-- ใส่ลิงก์ Google Drive ของชุดทดลอง
-const FREE_TRIAL_COVER = ""; // <-- ใส่ URL รูปปกของชุดทดลอง (ถ้ามี)
+const FREE_TRIAL_COVER = "https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/object/sign/free%20mock/Untitled%20design%20(7).png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8yZGUwYTg4Zi1hZjhjLTRjZjgtYTRhZS1iZjNjZmQ2YTljOGUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJmcmVlIG1vY2svVW50aXRsZWQgZGVzaWduICg3KS5wbmciLCJzY29wZSI6ImRvd25sb2FkIiwiaWF0IjoxNzg0NDg3ODEyLCJleHAiOjE4MTYwMjM4MTJ9.nkNkIEULYmSKfBebiBzsliTg6f9VlzwrbyeU4ezj954"; // <-- ใส่ URL รูปปกของชุดทดลอง (ถ้ามี)
 
 export default async function ProductsPage() {
   const supabase = createSupabaseServerClient();

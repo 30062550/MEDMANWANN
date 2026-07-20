@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { Home, FileText, FolderOpen, Search, ShoppingCart, User, MessageCircle } from "lucide-react";
+import { Home, FileText, FolderOpen, ShoppingCart, User, MessageCircle } from "lucide-react";
 import LogoutButton from "./LogoutButton";
 
 export default async function Navbar() {
@@ -47,13 +47,7 @@ export default async function Navbar() {
           )}
         </nav>
         <div className="flex items-center gap-3 shrink-0">
-          <Link
-            href="/products"
-            aria-label="ค้นหา"
-            className="p-2 rounded-full text-gray-500 hover:bg-cream-100 hidden sm:inline-flex"
-          >
-            <Search size={18} />
-          </Link>
+         
           {user && (
             <Link
               href="/orders"

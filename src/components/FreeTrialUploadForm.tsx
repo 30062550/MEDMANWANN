@@ -91,7 +91,7 @@ export default function FreeTrialUploadForm({ driveLink }: { driveLink: string }
             <CheckCircle2 size={20} />
             แนบหลักฐานสำเร็จแล้ว
           </div>
-          
+          <a
             href={driveLink}
             target="_blank"
             rel="noopener noreferrer"

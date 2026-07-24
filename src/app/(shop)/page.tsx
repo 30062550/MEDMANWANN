@@ -60,7 +60,7 @@ export default async function HomePage() {
           icon={<Layers size={22} />}
           title="Content"
           description="แบ่งปันข้อมูลเกี่ยวกับการสอบ TPAT1 ทั้งแชร์ทริคการสอบและการเตรียมตัว"
-          href="https://canva.link/sw4vjqpk4nw874j"
+          href="https://canva.link/mkhx25ckevtx315"
           linkLabel="เลือกดูคอนเทนต์"
         />
         <FeatureCard

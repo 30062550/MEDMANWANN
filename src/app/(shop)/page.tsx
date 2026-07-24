@@ -60,14 +60,14 @@ export default async function HomePage() {
           icon={<Layers size={22} />}
           title="Content"
           description="แบ่งปันข้อมูลเกี่ยวกับการสอบ TPAT1 ทั้งแชร์ทริคการสอบและการเตรียมตัว"
-          href="/content"
+          href="https://canva.link/sw4vjqpk4nw874j"
           linkLabel="เลือกดูคอนเทนต์"
         />
         <FeatureCard
           icon={<Star size={22} />}
           title="Review"
           description="มีรีวิวจากน้อง ๆ ที่ฝึกทำข้อสอบ จนได้คะแนนดีขึ้นและติดคณะสายกสพทตามที่หวังไว้"
-          href="/reviews"
+          href="https://www.canva.com/design/DAHPvmsENPI/DF0Ztw6WTPG019bvosy2vQ/watch"
           linkLabel="เลือกดูรีวิว"
         />
       </div>
@@ -96,11 +96,13 @@ function FeatureCard({
       <h3 className="font-bold text-brand-800 mt-4">{title}</h3>
       <p className="text-sm text-gray-500 mt-2">{description}</p>
       <Link
-        href={href}
-        className="inline-block mt-4 text-sm font-medium text-brand-700 border border-brand-200 rounded-md px-4 py-1.5 hover:bg-brand-50"
-      >
-        {linkLabel}
-      </Link>
+  href={href}
+  target={href.startsWith("http") ? "_blank" : undefined}
+  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+  className="inline-block mt-4 text-sm font-medium text-brand-700 border border-brand-200 rounded-md px-4 py-1.5 hover:bg-brand-50"
+>
+  {linkLabel}
+</Link>
     </div>
   );
 }

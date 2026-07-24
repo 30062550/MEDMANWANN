@@ -65,9 +65,9 @@ export default async function HomePage() {
         />
         <FeatureCard
           icon={<Star size={22} />}
-          title="/reviews"
+          title="Review"
           description="มีรีวิวจากน้อง ๆ ที่ฝึกทำข้อสอบ จนได้คะแนนดีขึ้นและติดคณะสายกสพทตามที่หวังไว้"
-          href="/products"
+          href="/reviews"
           linkLabel="เลือกดูรีวิว"
         />
       </div>

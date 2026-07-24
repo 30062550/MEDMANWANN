@@ -60,12 +60,12 @@ export default async function HomePage() {
           icon={<Layers size={22} />}
           title="Content"
           description="แบ่งปันข้อมูลเกี่ยวกับการสอบ TPAT1 ทั้งแชร์ทริคการสอบและการเตรียมตัว"
-          href="/products"
+          href="/content"
           linkLabel="เลือกดูคอนเทนต์"
         />
         <FeatureCard
           icon={<Star size={22} />}
-          title="Review"
+          title="/reviews"
           description="มีรีวิวจากน้อง ๆ ที่ฝึกทำข้อสอบ จนได้คะแนนดีขึ้นและติดคณะสายกสพทตามที่หวังไว้"
           href="/products"
           linkLabel="เลือกดูรีวิว"

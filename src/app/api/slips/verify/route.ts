@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createSupabaseServerClient, createSupabaseServiceRoleClient } from "@/lib/supabase/server";
+import { appendSlipRow } from "@/lib/googleSheets";
 
 export async function POST(req: NextRequest) {
   const supabase = createSupabaseServerClient();
@@ -29,6 +30,7 @@ export async function POST(req: NextRequest) {
   const serviceClient = createSupabaseServiceRoleClient();
   const fileExt = file.name.split(".").pop() || "jpg";
   const slipPath = `${userData.user.id}/${orderId}-${Date.now()}.${fileExt}`;
+
   const { error: uploadError } = await serviceClient.storage
     .from("slips")
     .upload(slipPath, buffer, { contentType: file.type });
@@ -37,6 +39,19 @@ export async function POST(req: NextRequest) {
       status: 500,
     });
   }
+
+  // อัปโหลดสำเนาไปยัง bucket สาธารณะ เพื่อเอาลิงก์ไปบันทึกใน Google Sheet
+  let publicSlipUrl = "";
+  const { error: publicUploadError } = await serviceClient.storage
+    .from("slip-public")
+    .upload(slipPath, buffer, { contentType: file.type });
+  if (!publicUploadError) {
+    const { data: publicUrlData } = serviceClient.storage
+      .from("slip-public")
+      .getPublicUrl(slipPath);
+    publicSlipUrl = publicUrlData.publicUrl;
+  }
+
   await serviceClient.from("payment_slips").insert({
     order_id: orderId,
     slip_image_path: slipPath,
@@ -44,10 +59,27 @@ export async function POST(req: NextRequest) {
     verified: false,
     verify_message: "รอแอดมินตรวจสอบสลิปด้วยมือ",
   });
+
   await serviceClient
     .from("orders")
     .update({ status: "pending_review" })
     .eq("id", orderId);
+
+  // บันทึกแถวใหม่ลง Google Sheet (ถ้า error ไม่ให้กระทบ flow หลัก แค่ log ไว้)
+  try {
+    const productTitle =
+      (order.products as unknown as { title: string } | null)?.title || "ไม่ทราบชื่อสินค้า";
+    await appendSlipRow({
+      orderNo: order.order_no,
+      productTitle,
+      customerEmail: userData.user.email || "-",
+      slipUrl: publicSlipUrl || "ไม่สามารถสร้างลิงก์ได้",
+      timestamp: new Date().toISOString(),
+    });
+  } catch (e) {
+    console.error("บันทึกลง Google Sheet ไม่สำเร็จ", e);
+  }
+
   return NextResponse.json({
     status: "pending_review",
     message: "อัปโหลดสลิปสำเร็จ รอแอดมินตรวจสอบและยืนยันการชำระเงิน",

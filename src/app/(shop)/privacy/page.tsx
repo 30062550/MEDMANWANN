@@ -139,7 +139,7 @@ export default function PrivacyPolicyPage() {
                 rel="noopener noreferrer"
                 className="text-brand-700 hover:underline"
               >
-                medmanwann
+                @medmanwann
               </a>
             </li>
             <li>
@@ -161,7 +161,7 @@ export default function PrivacyPolicyPage() {
                 rel="noopener noreferrer"
                 className="text-brand-700 hover:underline"
               >
-                medmanwann
+                @medmanwann
               </a>
             </li>
           </ul>

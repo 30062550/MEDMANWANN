@@ -32,7 +32,7 @@ export async function appendSlipRow(row: {
 
   await sheets.spreadsheets.values.append({
     spreadsheetId: sheetId,
-    range: "B:F",
+    range: "A:E",
     valueInputOption: "USER_ENTERED",
     requestBody: {
       values: [

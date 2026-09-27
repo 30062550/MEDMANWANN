@@ -10,6 +10,18 @@ const FREE_TRIAL_COVER = "https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/ob
 export default async function ProductsPage() {
   const supabase = createSupabaseServerClient();
 
+  const { data: userData } = await supabase.auth.getUser();
+
+  let alreadyClaimed = false;
+  if (userData.user) {
+    const { data: claim } = await supabase
+      .from("free_trial_claims")
+      .select("user_id")
+      .eq("user_id", userData.user.id)
+      .maybeSingle();
+    alreadyClaimed = !!claim;
+  }
+
   const { data: bigSetProduct } = await supabase
     .from("products")
     .select("id")
@@ -93,8 +105,8 @@ export default async function ProductsPage() {
         <div className="flex flex-col items-end gap-2 shrink-0">
           <span className="font-bold text-accent-500">ฟรี</span>
           <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-brand-700 text-white text-sm font-medium hover:bg-brand-800 whitespace-nowrap">
-            <Download size={14} /> ดูวิธีรับไฟล์
-          </span>
+  <Download size={14} /> {alreadyClaimed ? "ดาวน์โหลดไฟล์ข้อสอบฟรี" : "ดูวิธีรับไฟล์"}
+</span>
         </div>
       </Link>
 

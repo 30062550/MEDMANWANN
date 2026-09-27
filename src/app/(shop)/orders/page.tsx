@@ -13,9 +13,17 @@ export default async function OrdersListPage() {
   const supabase = createSupabaseServerClient();
   const { data: userData } = await supabase.auth.getUser();
 
-  if (!userData.user) {
+   if (!userData.user) {
     redirect("/login?next=/orders");
   }
+
+  const { data: claim } = await supabase
+    .from("free_trial_claims")
+    .select("user_id")
+    .eq("user_id", userData.user.id)
+    .maybeSingle();
+
+  const hasFreeTrial = !!claim;
 
   const { data: orders } = await supabase
     .from("orders")
@@ -31,11 +39,26 @@ export default async function OrdersListPage() {
         ดาวน์โหลดไฟล์ข้อสอบและเฉลยข้อสอบได้เลย
       </p>
 
-      {typedOrders.length === 0 && (
+            {typedOrders.length === 0 && !hasFreeTrial && (
         <p className="text-gray-500">คุณยังไม่มีคำสั่งซื้อ</p>
       )}
 
-      <div className="space-y-4">
+            <div className="space-y-4">
+        {hasFreeTrial && (
+          <Link
+            href="/free-trial"
+            className="bg-white rounded-xl border border-gray-100 shadow-sm p-4 flex items-center gap-4 hover:shadow-md transition"
+          >
+            <div className="w-16 h-16 shrink-0 rounded-lg overflow-hidden bg-cream-100 flex items-center justify-center text-gray-400">
+              <FileText size={20} />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="font-semibold text-brand-800 truncate">FREE! MOCKMANWANN</p>
+              <p className="text-xs text-gray-500 mt-1">ชุดทดลองฟรี</p>
+            </div>
+          </Link>
+        )}
+
         {typedOrders.map((order) => (
           <div
             key={order.id}

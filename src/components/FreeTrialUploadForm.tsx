@@ -62,7 +62,7 @@ export default function FreeTrialUploadForm({
           <CheckCircle2 size={20} />
           {alreadyClaimed ? "คุณเคยรับไฟล์นี้แล้ว" : "แนบหลักฐานสำเร็จแล้ว"}
         </div>
-        
+        <a
           href={driveLink}
           target="_blank"
           rel="noopener noreferrer"

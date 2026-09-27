@@ -3,10 +3,19 @@
 import { useState } from "react";
 import { Upload, X, Download, CheckCircle2, Loader2 } from "lucide-react";
 
-export default function FreeTrialUploadForm({ driveLink }: { driveLink: string }) {
+export default function FreeTrialUploadForm({
+  driveLink,
+  alreadyClaimed = false,
+}: {
+  driveLink: string;
+  alreadyClaimed?: boolean;
+}) {
   const [files, setFiles] = useState<File[]>([]);
   const [previews, setPreviews] = useState<string[]>([]);
-  const [status, setStatus] = useState<"idle" | "checking" | "done">("idle");
+  const [status, setStatus] = useState<"idle" | "checking" | "done" | "error">(
+    alreadyClaimed ? "done" : "idle"
+  );
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const newFiles = Array.from(e.target.files || []);
@@ -24,12 +33,46 @@ export default function FreeTrialUploadForm({ driveLink }: { driveLink: string }
     setStatus("idle");
   }
 
-  function handleCheck() {
+  async function handleCheck() {
     if (files.length === 0) return;
     setStatus("checking");
-    setTimeout(() => {
+    setErrorMsg(null);
+
+    try {
+      const res = await fetch("/api/free-trial/claim", { method: "POST" });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setErrorMsg(data.error || "เกิดข้อผิดพลาด กรุณาลองใหม่");
+        setStatus("error");
+        return;
+      }
+
       setStatus("done");
-    }, 1500);
+    } catch {
+      setErrorMsg("เชื่อมต่อไม่สำเร็จ กรุณาลองใหม่");
+      setStatus("error");
+    }
+  }
+
+  if (status === "done") {
+    return (
+      <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6 text-center">
+        <div className="flex items-center justify-center gap-2 text-green-600 font-medium mb-4">
+          <CheckCircle2 size={20} />
+          {alreadyClaimed ? "คุณเคยรับไฟล์นี้แล้ว" : "แนบหลักฐานสำเร็จแล้ว"}
+        </div>
+        
+          href={driveLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full flex items-center justify-center gap-2 bg-brand-700 text-white rounded-md py-3 font-medium hover:bg-brand-800"
+        >
+          <Download size={18} />
+          ดาวน์โหลดไฟล์ข้อสอบฟรี
+        </a>
+      </div>
+    );
   }
 
   return (
@@ -65,42 +108,24 @@ export default function FreeTrialUploadForm({ driveLink }: { driveLink: string }
         </div>
       )}
 
-      {status !== "done" && (
-        <button
-          type="button"
-          onClick={handleCheck}
-          disabled={files.length === 0 || status === "checking"}
-          className="w-full mt-5 flex items-center justify-center gap-2 bg-brand-700 text-white rounded-md py-3 font-medium hover:bg-brand-800 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          {status === "checking" ? (
-            <>
-              <Loader2 size={18} className="animate-spin" />
-              กำลังตรวจสอบหลักฐาน...
-            </>
-          ) : (
-            <>
-              {files.length === 0 ? "กรุณาแนบหลักฐานก่อน" : "ยืนยันแนบหลักฐาน"}
-            </>
-          )}
-        </button>
-      )}
+      <button
+        type="button"
+        onClick={handleCheck}
+        disabled={files.length === 0 || status === "checking"}
+        className="w-full mt-5 flex items-center justify-center gap-2 bg-brand-700 text-white rounded-md py-3 font-medium hover:bg-brand-800 disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        {status === "checking" ? (
+          <>
+            <Loader2 size={18} className="animate-spin" />
+            กำลังบันทึก...
+          </>
+        ) : (
+          <>{files.length === 0 ? "กรุณาแนบหลักฐานก่อน" : "ยืนยันแนบหลักฐาน"}</>
+        )}
+      </button>
 
-      {status === "done" && (
-        <div className="mt-5 text-center">
-          <div className="flex items-center justify-center gap-2 text-green-600 font-medium mb-4">
-            <CheckCircle2 size={20} />
-            แนบหลักฐานสำเร็จแล้ว
-          </div>
-          <a
-            href={driveLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full flex items-center justify-center gap-2 bg-brand-700 text-white rounded-md py-3 font-medium hover:bg-brand-800"
-          >
-            <Download size={18} />
-            รับไฟล์ข้อสอบฟรี
-          </a>
-        </div>
+      {status === "error" && (
+        <p className="text-sm text-red-600 mt-2 text-center">{errorMsg}</p>
       )}
     </div>
   );

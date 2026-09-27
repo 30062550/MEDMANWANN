@@ -8,7 +8,7 @@ import { FileText, Clock } from "lucide-react";
 import DownloadButton from "@/components/DownloadButton";
 
 export const revalidate = 0;
-
+const FREE_TRIAL_COVER = "https://icltzbnzdjfskpzowygk.supabase.co/storage/v1/object/sign/free%20mock/Untitled%20design%20(7).png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8yZGUwYTg4Zi1hZjhjLTRjZjgtYTRhZS1iZjNjZmQ2YTljOGUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJmcmVlIG1vY2svVW50aXRsZWQgZGVzaWduICg3KS5wbmciLCJzY29wZSI6ImRvd25sb2FkIiwiaWF0IjoxNzg0NDg5MjIxLCJleHAiOjE4MTYwMjUyMjF9.ebqCNooEH2wqPAWL-umFFtMdoOxjqC3alz_IA1eKAN4";
 export default async function OrdersListPage() {
   const supabase = createSupabaseServerClient();
   const { data: userData } = await supabase.auth.getUser();
@@ -49,12 +49,17 @@ export default async function OrdersListPage() {
             href="/free-trial"
             className="bg-white rounded-xl border border-gray-100 shadow-sm p-4 flex items-center gap-4 hover:shadow-md transition"
           >
-            <div className="w-16 h-16 shrink-0 rounded-lg overflow-hidden bg-cream-100 flex items-center justify-center text-gray-400">
-              <FileText size={20} />
-            </div>
+            <div className="relative w-16 h-16 shrink-0 rounded-lg overflow-hidden bg-cream-100">
+  <Image
+    src={FREE_TRIAL_COVER}
+    alt="FREE! MOCKMANWANN"
+    fill
+    className="object-cover"
+  />
+</div>
             <div className="flex-1 min-w-0">
               <p className="font-semibold text-brand-800 truncate">FREE! MOCKMANWANN</p>
-              <p className="text-xs text-gray-500 mt-1">ชุดทดลองฟรี</p>
+              <p className="text-xs text-gray-500 mt-1">Mock TPAT1 by MEDMANWANN ชุดทดลอง ฟรี! ไม่มีค่าใช้จ่าย</p>
             </div>
           </Link>
         )}

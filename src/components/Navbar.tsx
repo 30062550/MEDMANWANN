@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { Home, FileText, FolderOpen, ShoppingCart, User, MessageCircle } from "lucide-react";
+import { Home, FileText, FolderOpen, User, MessageCircle } from "lucide-react";
 import LogoutButton from "./LogoutButton";
 
 export default async function Navbar() {
@@ -47,16 +47,6 @@ export default async function Navbar() {
           )}
         </nav>
         <div className="flex items-center gap-3 shrink-0">
-         
-          {user && (
-            <Link
-              href="/orders"
-              aria-label="คลังข้อสอบของฉัน"
-              className="p-2 rounded-full text-gray-500 hover:bg-cream-100 relative"
-            >
-              <ShoppingCart size={18} />
-            </Link>
-          )}
           {user ? (
             <div className="flex items-center gap-2">
               <span className="hidden xl:inline text-sm text-gray-500">{user.email}</span>

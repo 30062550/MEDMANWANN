@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ShoppingCart } from "lucide-react";
 
 export default function BuyButton({
   productId,
@@ -41,23 +40,15 @@ export default function BuyButton({
     router.push(`/orders/${json.orderId}`);
   }
 
-  return (
+return (
     <div>
-      <div className="flex gap-3">
-        <button
-          onClick={() => router.push("/products")}
-          className="flex items-center gap-2 px-5 py-3 rounded-md border border-brand-200 text-brand-700 font-medium hover:bg-brand-50"
-        >
-          <ShoppingCart size={16} /> เพิ่มลงตะกร้า
-        </button>
-        <button
-          onClick={handleBuy}
-          disabled={loading}
-          className="flex-1 bg-brand-700 text-white rounded-md py-3 font-medium hover:bg-brand-800 disabled:opacity-50"
-        >
-          {loading ? "กำลังสร้างคำสั่งซื้อ..." : "ซื้อเลย"}
-        </button>
-      </div>
+      <button
+        onClick={handleBuy}
+        disabled={loading}
+        className="w-full bg-brand-700 text-white rounded-md py-3 font-medium hover:bg-brand-800 disabled:opacity-50"
+      >
+        {loading ? "กำลังสร้างคำสั่งซื้อ..." : "ซื้อเลย"}
+      </button>
       {error && <p className="text-sm text-red-600 mt-2">{error}</p>}
     </div>
   );

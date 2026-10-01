@@ -24,7 +24,7 @@ const CHANNELS = [
     icon: Music2,
   },
   {
-    name: "เว็บไซต์ MEDMANWANN",
+    name: "MEDMANWANN Website",
     href: "/",
     icon: Globe,
   },

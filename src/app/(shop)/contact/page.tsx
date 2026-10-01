@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { MessageCircle, Instagram, Twitter, Music2 } from "lucide-react";
+import Link from "next/link";
+import { MessageCircle, Instagram, Twitter, Music2, Globe } from "lucide-react";
 
 const CHANNELS = [
   {
@@ -17,10 +18,15 @@ const CHANNELS = [
     href: "https://x.com/medmanwann?s=11&t=ETiEyEnqH1AdGHn6TUt5DQ",
     icon: Twitter,
   },
-  {
+    {
     name: "TikTok",
     href: "https://www.tiktok.com/@medmanwann?_r=1&_t=ZS-98AcglXE2BZ",
     icon: Music2,
+  },
+  {
+    name: "เว็บไซต์ MEDMANWANN",
+    href: "/",
+    icon: Globe,
   },
 ];
 
@@ -41,16 +47,29 @@ export default function ContactPage() {
         <p className="text-sm text-gray-500 mt-2 mb-8">
           MEDMANWANN | stay soft, study smart
         </p>
-        <div className="space-y-3">
+                <div className="space-y-3">
           {CHANNELS.map((channel) => {
             const Icon = channel.icon;
+            const isInternal = channel.href.startsWith("/");
+            const className =
+              "flex items-center gap-3 bg-brand-700 hover:bg-brand-800 text-white rounded-full py-3 px-5 font-medium transition";
+
+            if (isInternal) {
+              return (
+                <Link key={channel.name} href={channel.href} className={className}>
+                  <Icon size={20} />
+                  <span className="flex-1 text-left">{channel.name}</span>
+                </Link>
+              );
+            }
+
             return (
-            <a  
+              <a
                 key={channel.name}
                 href={channel.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 bg-brand-700 hover:bg-brand-800 text-white rounded-full py-3 px-5 font-medium transition"
+                className={className}
               >
                 <Icon size={20} />
                 <span className="flex-1 text-left">{channel.name}</span>

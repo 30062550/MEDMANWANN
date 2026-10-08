@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { LogIn } from "lucide-react";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import PasswordInput from "@/components/PasswordInput";
 
 export default function LoginBox({ isLoggedIn }: { isLoggedIn: boolean }) {
   const router = useRouter();
@@ -71,14 +72,19 @@ export default function LoginBox({ isLoggedIn }: { isLoggedIn: boolean }) {
           onChange={(e) => setEmail(e.target.value)}
           className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-300"
         />
-        <input
-          type="password"
-          required
-          placeholder="รหัสผ่าน"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-300"
-        />
+                <div>
+          <PasswordInput
+            value={password}
+            onChange={setPassword}
+            placeholder="รหัสผ่าน"
+            small
+          />
+          <div className="text-right mt-1">
+            <Link href="/forgot-password" className="text-xs text-brand-700 hover:underline">
+              ลืมรหัสผ่าน?
+            </Link>
+          </div>
+        </div>
 
         {error && <p className="text-xs text-red-600">{error}</p>}
 

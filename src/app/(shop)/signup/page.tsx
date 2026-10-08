@@ -26,19 +26,24 @@ async function handleSubmit(e: React.FormEvent) {
   }
 
   setLoading(true);
-  const { error } = await supabase.auth.signUp({
-    email,
-    password,
-    options: {
-      data: { full_name: fullName },
-    },
-  });
-  setLoading(false);
-  if (error) {
-    setError(error.message);
-    return;
-  }
-  setDone(true);
+      const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: { full_name: fullName },
+      },
+    });
+    setLoading(false);
+    if (error) {
+      setError(error.message);
+      return;
+    }
+    if (data.session) {
+      router.push("/");
+      router.refresh();
+      return;
+    }
+    setDone(true);
 }
 
   if (done) {

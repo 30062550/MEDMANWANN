@@ -45,7 +45,7 @@ export default function ForgotPasswordPage() {
     <div className="max-w-md mx-auto bg-white rounded-xl border border-gray-100 shadow-sm p-8">
       <h1 className="text-xl font-bold text-brand-800 mb-2">ลืมรหัสผ่าน</h1>
       <p className="text-sm text-gray-500 mb-6">
-        กรอกอีเมลที่ใช้สมัคร เราจะส่งลิงก์สำหรับตั้งรหัสผ่านใหม่ให้
+        กรอกอีเมลที่ใช้สมัคร ลิงก์สำหรับตั้งรหัสผ่านใหม่จะถูกส่งไปทางอีเมล
       </p>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>

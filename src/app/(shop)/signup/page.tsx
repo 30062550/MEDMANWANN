@@ -89,14 +89,7 @@ async function handleSubmit(e: React.FormEvent) {
 
         <div>
   <label className="block text-sm font-medium text-gray-700 mb-1">รหัสผ่าน</label>
-  <input
-    type="password"
-    required
-    minLength={8}
-    value={password}
-    onChange={(e) => setPassword(e.target.value)}
-    className="w-full rounded-md border border-gray-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-300"
-  />
+           <PasswordInput value={password} onChange={setPassword} minLength={8} />
   <p className="text-xs text-gray-400 mt-1">รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัวอักษร</p>
 </div>
 

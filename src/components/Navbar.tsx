@@ -77,6 +77,38 @@ export default async function Navbar() {
           )}
         </div>
       </div>
+              </div>
+      </div>
+
+      <nav className="lg:hidden border-t border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 h-11 flex items-center gap-5 overflow-x-auto text-sm text-gray-600 whitespace-nowrap">
+          <Link href="/" className="flex items-center gap-1.5 hover:text-brand-600">
+            <Home size={16} /> หน้าแรก
+          </Link>
+          <Link href="/products" className="flex items-center gap-1.5 hover:text-brand-600">
+            <FileText size={16} /> รายการข้อสอบ
+          </Link>
+          {user && (
+            <Link href="/orders" className="flex items-center gap-1.5 hover:text-brand-600">
+              <FolderOpen size={16} /> คลังข้อสอบของฉัน
+            </Link>
+          )}
+          <Link href="/contact" className="flex items-center gap-1.5 hover:text-brand-600">
+            <MessageCircle size={16} /> ติดต่อเรา
+          </Link>
+          {isAdmin && (
+            <Link
+              href="/admin"
+              className="flex items-center gap-1.5 text-brand-700 font-medium hover:text-brand-800"
+            >
+              แดชบอร์ดแอดมิน
+            </Link>
+          )}
+        </div>
+      </nav>
+    </header>
+  );
+}
     </header>
   );
 }

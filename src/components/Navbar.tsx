@@ -77,8 +77,6 @@ export default async function Navbar() {
           )}
         </div>
       </div>
-              </div>
-      </div>
 
       <nav className="lg:hidden border-t border-gray-100">
         <div className="max-w-6xl mx-auto px-4 h-11 flex items-center gap-5 overflow-x-auto text-sm text-gray-600 whitespace-nowrap">
@@ -106,9 +104,6 @@ export default async function Navbar() {
           )}
         </div>
       </nav>
-    </header>
-  );
-}
     </header>
   );
 }

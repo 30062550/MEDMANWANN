@@ -62,18 +62,18 @@ export async function POST(req: NextRequest) {
 
   // บันทึกแถวใหม่ลง Google Sheet (ถ้า error ไม่ให้กระทบ flow หลัก แค่ log ไว้)
   try {
-    const productTitle =
-      (order.products as unknown as { title: string } | null)?.title || "ไม่ทราบชื่อสินค้า";
-    await appendSlipRow({
-      orderNo: order.order_no,
-      productTitle,
-      customerEmail: userData.user.email || "-",
-      slipUrl: publicSlipUrl,
-      timestamp: new Date().toISOString(),
-    });
-  } catch (e) {
-    console.error("บันทึกลง Google Sheet ไม่สำเร็จ", e);
-  }
+  await appendSlipRow({
+    orderNo: order.order_no,
+    productTitle: (order.products as unknown as { title: string } | null)?.title || "ไม่ทราบชื่อสินค้า",
+    customerName: "-",
+    customerEmail: "-",
+    amount: Number(order.amount),
+    slipUrl: "",
+    timestamp: new Date().toISOString(),
+  });
+} catch (e) {
+  console.error("บันทึกลง Google Sheet ไม่สำเร็จ", e);
+}
 
   return NextResponse.json({
     status: "pending_review",

@@ -4,6 +4,7 @@ import { formatTHB, formatDateTH, ORDER_STATUS_LABEL } from "@/lib/utils";
 import { AlertTriangle } from "lucide-react";
 import SlipViewer from "@/components/admin/SlipViewer";
 import OrderReviewActions from "@/components/admin/OrderReviewActions";
+import SlipToggleButton from "@/components/admin/SlipToggleButton";
 
 export const revalidate = 0;
 
@@ -64,6 +65,7 @@ export default async function AdminOrdersPage() {
               <th className="px-4 py-3">ยอดเงิน</th>
               <th className="px-4 py-3">สถานะ</th>
               <th className="px-4 py-3">วันที่</th>
+              <th className="px-4 py-3">สลิป</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-50">
@@ -79,7 +81,10 @@ export default async function AdminOrdersPage() {
                       {statusInfo.label}
                     </span>
                   </td>
-                  <td className="px-4 py-3 text-gray-500">{formatDateTH(order.created_at)}</td>
+                                    <td className="px-4 py-3 text-gray-500">{formatDateTH(order.created_at)}</td>
+                  <td className="px-4 py-3">
+                    <SlipToggleButton orderId={order.id} orderNo={order.order_no} />
+                  </td>
                 </tr>
               );
             })}
